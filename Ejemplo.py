@@ -1,4 +1,4 @@
-""" Calcule el IMC de una persona dado su peso y estatura posteriormente lo clasificaremos de acuerdo a la siguiente tabla
+""" Calcule el IMC de una persona dado su peso y estatura lo clasificaremos de acuerdo a la siguiente tabla
 ------
 IMC          Clasificacion
   < 18.49       = bajo peso
@@ -24,36 +24,30 @@ while True:
           print("INVALIDO: favor de ingresar caracteres alfabteicos")
 print("Hola"+Nombre+"! Bienvenidos, ")
  
-Edad = input("ingrese su edad")
-while not Edad.isdigit():
-     print("INVALIDO: favor ingresar edad con caracteres numericos")
-     Edad = input("ingrese su edad")
-if(Edad < 18):
-        print("Usted es menor de edad")
-else:
-        print("Usted es mayor de edad")
+while True:
+     Edad = float(input("ingrese su edad: "))
+     try:
+          Edad = int(Edad)
+          break
+     except ValueError:
+          print("INVALIDO: favor de ingresar su edad con caracteres numericos")
+
 
 #captura de informacion relevante a IMC
 while True:
-     peso = float(input("ingrese el peso en Kilogrsamos(kg)"))
+     peso = float(input("ingrese el peso en Kilogrsamos(kg): "))
      try:
-          peso = int(float(input("ingrese su peso")))
+          peso = int(peso)
           break
      except ValueError:
           print("INVALIDO: favor de ingresar su peso con caracteres numericos")
-     
-while True:
-     estatura = float(input("ingrese su estatura en metros (m)"))
-     try:
-          estatura = int(float(input("ingrese su estatura en metros (m)")))
-          break
-     except ValueError:
-          print("INVALIDO: favor ingresar su estatura con caracteres numericos")
+
+estatura = float(input("ingrese su estatura en metros (m): "))
 
 #determinacion de IMC
-IMC = peso / (estatura * estatura)
-def IMC(peso, estatura):
-    return peso / (estatura * estatura)
+
+def calcularIMC(p, a):
+     return p / (a * a)
 
 def clasificacionIMC(IMC):
     if IMC < 18.49:
@@ -69,8 +63,8 @@ def clasificacionIMC(IMC):
     elif IMC >= 40:
         return "padece de obesidad morbida"
 
+print(Nombre+", usted "+clasificacionIMC(calcularIMC(peso, estatura)))
 
-print(Nombre+", su IMC es"+IMC+", usted "+clasificacionIMC)
 
 
 
